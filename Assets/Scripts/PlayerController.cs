@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        m_animator.SetBool("Grounded", m_isGrounded);
+        if (m_animator != null) m_animator.SetBool("Grounded", m_isGrounded);
         PlayerMove();
         Jumping();
         m_wasGrounded = m_isGrounded;
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         Vector3 worldMove = transform.forward * moveDir.z + transform.right * moveDir.x;
         transform.Translate(worldMove * m_moveSpeed * Time.deltaTime, Space.World);
 
-        m_animator.SetFloat("MoveSpeed", moveDir.magnitude);
+        if (m_animator != null) m_animator.SetFloat("MoveSpeed", moveDir.magnitude);
     }
 
     private void Jumping()
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
         if (!m_isGrounded && m_wasGrounded)
         {
-            m_animator.SetTrigger("Jump");
+            if (m_animator != null) m_animator.SetTrigger("Jump");
         }
     }
 
