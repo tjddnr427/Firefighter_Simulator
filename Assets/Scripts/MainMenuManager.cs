@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [SerializeField] private GameObject settingsPanel;
-    [SerializeField] private GameObject controlsPanel;
-    [SerializeField] private Slider bgmSlider;
-    [SerializeField] private Slider sfxSlider;
+    public GameObject settingsPanel;
+    public GameObject controlsPanel;
+    public Slider bgmSlider;
+    public Slider sfxSlider;
 
     void Start()
     {

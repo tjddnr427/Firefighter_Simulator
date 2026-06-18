@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Water : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 10f;
+    public float moveSpeed = 10f;
 
     void Update()
     {

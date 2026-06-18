@@ -1,13 +1,13 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [SerializeField] private float timeLimit = 90f;
-    [SerializeField] private Text timeText;
-    [SerializeField] private Text scoreText;
+    public float timeLimit = 90f;
+    public TextMeshProUGUI timeText;
+    public TextMeshProUGUI scoreText;
 
     private float remainingTime;
     private int score;
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     void UpdateUI()
     {
-        if (timeText != null) timeText.text = "시간: " + Mathf.CeilToInt(remainingTime) + "초";
-        if (scoreText != null) scoreText.text = "점수: " + score;
+        if (timeText != null) timeText.text = "Time: " + Mathf.CeilToInt(remainingTime) + "s";
+        if (scoreText != null) scoreText.text = "Score: " + score;
     }
 }

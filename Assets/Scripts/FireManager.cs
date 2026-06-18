@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class FireManager : MonoBehaviour
 {
-    [SerializeField] private GameObject firePrefab;
-    [SerializeField] private Transform[] fireSpawnPoints;
+    public GameObject firePrefab;
+    public Transform[] fireSpawnPoints;
 
     void Start()
     {

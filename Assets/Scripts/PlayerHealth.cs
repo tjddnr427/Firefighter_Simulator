@@ -3,24 +3,29 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private float maxHP = 100f;
-    [SerializeField] private Slider hpSlider;
+    public int maxHP = 3;
+    public Slider hpSlider;
 
-    private float currentHP;
+    private int currentHP;
 
     void Start()
     {
         currentHP = maxHP;
-        if (hpSlider != null) hpSlider.value = 1f;
+        if (hpSlider != null)
+        {
+            hpSlider.maxValue = maxHP;
+            hpSlider.value = currentHP;
+        }
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(int amount)
     {
         currentHP -= amount;
-        currentHP = Mathf.Clamp(currentHP, 0f, maxHP);
-        if (hpSlider != null) hpSlider.value = currentHP / maxHP;
+        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
 
-        if (currentHP <= 0f)
+        if (hpSlider != null) hpSlider.value = currentHP;
+
+        if (currentHP <= 0)
             GameManager.Instance.GameOver();
     }
 }
