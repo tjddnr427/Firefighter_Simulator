@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fire
   - FireSpawnPoint
+  - Sensor
   layers:
   - Default
   - TransparentFX
