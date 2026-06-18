@@ -3,11 +3,11 @@ using UnityEngine;
 public class FireManager : MonoBehaviour
 {
     public GameObject firePrefab;
-    public Transform[] fireSpawnPoints;
 
     void Start()
     {
-        foreach (Transform point in fireSpawnPoints)
-            Instantiate(firePrefab, point.position, point.rotation);
+        GameObject[] points = GameObject.FindGameObjectsWithTag("FireSpawnPoint");
+        foreach (GameObject point in points)
+            Instantiate(firePrefab, point.transform.position, point.transform.rotation);
     }
 }
