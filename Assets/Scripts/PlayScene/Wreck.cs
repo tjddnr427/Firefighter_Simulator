@@ -3,7 +3,15 @@ using UnityEngine.InputSystem;
 
 public class Wreck : MonoBehaviour
 {
+    public int hp = 3;
+
     private bool sensorNear = false;
+    private ParticleSystem hitParticle;
+
+    void Start()
+    {
+        hitParticle = GetComponentInChildren<ParticleSystem>();
+    }
 
     void Update()
     {
@@ -11,7 +19,10 @@ public class Wreck : MonoBehaviour
             && PlayerController.currentItem == PlayerController.ItemType.Crowbar
             && Mouse.current.leftButton.wasPressedThisFrame)
         {
-            Destroy(gameObject);
+            if (hitParticle != null) hitParticle.Play();
+
+            hp--;
+            if (hp <= 0) Destroy(gameObject);
         }
     }
 
