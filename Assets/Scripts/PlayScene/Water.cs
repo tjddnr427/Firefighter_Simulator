@@ -17,5 +17,9 @@ public class Water : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
+        else if (!other.CompareTag("Player") && !other.CompareTag("Sensor") && !other.CompareTag("Water"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

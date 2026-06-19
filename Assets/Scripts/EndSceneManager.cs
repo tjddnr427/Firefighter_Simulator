@@ -8,6 +8,9 @@ public class EndSceneManager : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         if (scoreText != null)
             scoreText.text = "Score: " + PlayerPrefs.GetInt("FinalScore", 0);
     }
