@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -48,13 +49,17 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGameOver = true;
-        Debug.Log("GAME OVER");
+        PlayerPrefs.SetString("EndResult", "GAME OVER");
+        PlayerPrefs.SetInt("FinalScore", score);
+        SceneManager.LoadScene("EndScene");
     }
 
     void GameClear()
     {
         isGameOver = true;
-        Debug.Log("GAME CLEAR! Score: " + score);
+        PlayerPrefs.SetString("EndResult", "GAME CLEAR!");
+        PlayerPrefs.SetInt("FinalScore", score);
+        SceneManager.LoadScene("EndScene");
     }
 
     void UpdateUI()

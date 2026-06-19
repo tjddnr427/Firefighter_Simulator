@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
         if (m_animator != null) m_animator.SetBool("Grounded", m_isGrounded);
         PlayerMove();
         Jumping();
+        UpdateActionAnimations();
         m_wasGrounded = m_isGrounded;
 
         if (Keyboard.current.fKey.wasPressedThisFrame) OnInteract();
@@ -42,6 +43,17 @@ public class PlayerController : MonoBehaviour
         if (Keyboard.current.digit2Key.wasPressedThisFrame) OnQuickSlot(1);
         if (Keyboard.current.digit3Key.wasPressedThisFrame) OnQuickSlot(2);
         if (Keyboard.current.digit4Key.wasPressedThisFrame) OnQuickSlot(3);
+    }
+
+    private void UpdateActionAnimations()
+    {
+        if (m_animator == null) return;
+
+        bool isShooting = currentItem == ItemType.Extinguisher && Mouse.current.leftButton.isPressed;
+        m_animator.SetBool("IsExtinguishing", isShooting);
+
+        if (currentItem == ItemType.Crowbar && Mouse.current.leftButton.wasPressedThisFrame)
+            m_animator.SetTrigger("Attack");
     }
 
     private void PlayerMove()
